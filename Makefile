@@ -1,6 +1,6 @@
 TARGET := hipi
-CXX := g++
-CXXFLAGS := -std=c++17 -O3 -Wall -Wextra -march=native
+CXX ?= g++
+CXXFLAGS ?= -std=c++17 -O3 -Wall -Wextra -march=native
 
 SRC := hipi.cpp
 
