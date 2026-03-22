@@ -1,0 +1,63 @@
+# Compiled binaries
+hipi
+*.exe
+*.out
+*.app
+
+# Object files
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+
+# Build directories
+build/
+cmake-build-*/
+Debug/
+Release/
+out/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Clangd cache
+.cache/
+compile_commands.json
+
+# Core dumps
+core
+core.*
+*.core
+
+# Test files (if any generated)
+*.log
+test_output/
+
+# Package manager files (if used later)
+vcpkg_installed/
+conanbuildinfo.*
+conan.lock
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Coverage files
+*.gcov
+*.gcno
+*.gcda
+coverage/
+*.profraw
+*.profdata
+
+# Static analysis
+clang-tidy.log
+cppcheck.log
