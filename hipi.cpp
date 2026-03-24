@@ -341,12 +341,14 @@ void print_usage(const char* prog) {
          << "Keywords format: word1=color,word2=color,...\n"
          << "  Colors: red, green, yellow, blue, magenta, cyan\n"
          << "  Default color: cyan\n\n"
-         << "Built-in keywords:\n"
-         << "  error, excep, cause  -> red+bold\n"
-         << "  warn, warning, not   -> yellow+bold\n"
-         << "  info                 -> green\n"
-         << "  debug                -> blue\n"
-         << "  fatal, fail          -> magenta+bold\n\n"
+<< "Built-in keywords:\n"
+          << "  error, excep, cause, critical, panic, crash, abort,\n"
+          << "  denied, refused, rejected, invalid, illegal -> red+bold\n"
+          << "  warn, warning, deprecated, timeout, retry, missing,\n"
+          << "  unknown, unexpected, not -> yellow+bold\n"
+          << "  info, success, complete, started, stopped, ready, ok -> green\n"
+          << "  debug, trace, verbose -> blue\n"
+          << "  fatal, fail, emergency, alert -> magenta+bold\n\n"
          << "Config file: ~/.config/hipi.conf\n"
          << "  One keyword per line to exclude lines containing it.\n"
          << "  Lines starting with # are comments.\n\n"
@@ -375,13 +377,48 @@ int main(int argc, char* argv[]) {
     highlight_trie.add("excep", Color::RED + Color::BOLD);
     highlight_trie.add("cause", Color::RED + Color::BOLD);
     highlight_trie.add("error", Color::RED + Color::BOLD);
+    highlight_trie.add("critical", Color::RED + Color::BOLD);
+    highlight_trie.add("panic", Color::RED + Color::BOLD);
+    highlight_trie.add("crash", Color::RED + Color::BOLD);
+    highlight_trie.add("abort", Color::RED + Color::BOLD);
+    highlight_trie.add("denied", Color::RED + Color::BOLD);
+    highlight_trie.add("deny", Color::RED + Color::BOLD);
+    highlight_trie.add("refused", Color::RED + Color::BOLD);
+    highlight_trie.add("refuse", Color::RED + Color::BOLD);
+    highlight_trie.add("rejected", Color::RED + Color::BOLD);
+    highlight_trie.add("reject", Color::RED + Color::BOLD);
+    highlight_trie.add("invalid", Color::RED + Color::BOLD);
+    highlight_trie.add("illegal", Color::RED + Color::BOLD);
     highlight_trie.add("not", Color::YELLOW + Color::BOLD);
     highlight_trie.add("warn", Color::YELLOW + Color::BOLD);
     highlight_trie.add("warning", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("deprecated", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("deprecate", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("timeout", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("timed out", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("retry", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("retries", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("missing", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("unknown", Color::YELLOW + Color::BOLD);
+    highlight_trie.add("unexpected", Color::YELLOW + Color::BOLD);
     highlight_trie.add("info", Color::GREEN);
+    highlight_trie.add("success", Color::GREEN);
+    highlight_trie.add("successful", Color::GREEN);
+    highlight_trie.add("complete", Color::GREEN);
+    highlight_trie.add("completed", Color::GREEN);
+    highlight_trie.add("started", Color::GREEN);
+    highlight_trie.add("starting", Color::GREEN);
+    highlight_trie.add("stopped", Color::GREEN);
+    highlight_trie.add("stopping", Color::GREEN);
+    highlight_trie.add("ready", Color::GREEN);
+    highlight_trie.add("ok", Color::GREEN);
     highlight_trie.add("debug", Color::BLUE);
+    highlight_trie.add("trace", Color::BLUE);
+    highlight_trie.add("verbose", Color::BLUE);
     highlight_trie.add("fatal", Color::MAGENTA + Color::BOLD);
     highlight_trie.add("fail", Color::MAGENTA + Color::BOLD);
+    highlight_trie.add("emergency", Color::MAGENTA + Color::BOLD);
+    highlight_trie.add("alert", Color::MAGENTA + Color::BOLD);
     
     /* Parse user-specified keywords */
     if (argc > 1) {
